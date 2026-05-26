@@ -1,0 +1,17 @@
+{
+    "name": "jesse.vsouza/jucapizzas-refatorado",
+    "description": "Projeto pedagógico para demonstrar a criação de APIs",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "JesseVsouza\\JucapizzasRefatorado\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jesseh-dev",
+            "email": "jvsouza@gmail.com"
+        }
+    ],
+    "require": {}
+}
