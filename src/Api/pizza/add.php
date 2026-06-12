@@ -7,6 +7,9 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
  
 include_once '../../config/Database.php';
 include_once '../../models/Pizza.php';
+
+use JesseVsouza\JucapizzasRefatorado\Models\Pizza;
+use JesseVsouza\JucapizzasRefatorado\Config\Database;
  
 // Instanciar o banco de dados e conectar
 $database = new Database();
@@ -27,10 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             !empty($data->valor)
         ) {
             // Atribuir os valores ao objeto Pizza
-            $pizza->nome = $data->nome;
+            $pizza->setNome($data->nome);
             $pizza->ingredientes = $data->ingredientes;
-            $pizza->valor = $data->valor;
- 
+            $pizza->setValor($data->valor);
+
             // Criar a pizza
             if ($pizza->add()) {
                 http_response_code(201);

@@ -1,6 +1,9 @@
 <?php
 
-namespace JesseVsouza\JucapizzasRefatorado\models;
+namespace JesseVsouza\JucapizzasRefatorado\Models;
+
+use PDO;
+use Exception;
 
 class Pizza {
 
@@ -8,9 +11,49 @@ class Pizza {
     private $tabela = "pizzas";
 
     public $idPizza;
-    public $nome;
+    private $nome;
     public $ingredientes;
-    public $valor;
+    private float $valor;
+
+// Getters e Setters
+    public function getValor(): float {
+        return $this->valor;
+    }
+    public function setValor(float $valor): void {
+        if ($valor<=0) {
+            throw new Exception("Valor inválido. É necessário um valor maior que zero.");
+        }
+        $this->valor = $valor;
+    }
+
+  public function getNome(): string {
+        return $this->nome;
+    }
+    public function setNome(string $nome): void {
+       if (trim($nome) === '') {
+            throw new Exception("Nome da pizza não pode ser vazio. Necessário preencher o nome da pizza.");
+        }else if (strlen(trim($nome)) < 3) {
+            throw new Exception("Valor inválido. O nome da pizza deve conter entre 3 caracteres.");
+        }
+
+        $this->nome = $nome;
+
+
+
+
+
+
+
+    }
+
+
+        
+
+
+
+
+
+
 
     public function __construct($db) {
         $this->conn = $db;

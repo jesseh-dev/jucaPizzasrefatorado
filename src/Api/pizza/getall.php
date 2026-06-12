@@ -7,6 +7,8 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
  
+require __DIR__ . '/../../../vendor/autoload.php';
+
 use JesseVsouza\JucapizzasRefatorado\models\Pizza;
 use JesseVsouza\JucapizzasRefatorado\Config\Database;
 
@@ -22,8 +24,8 @@ $db = $database->getConnection();
 // Instanciar o objeto Pizza
 $pizza = new Pizza($db);
  
-// try{ colocar para demonstrar erro com coluna errada mas lá no método read em pizza
-    // Chamar o método read() para buscar as pizzas
+try{ 
+
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $stmt = $pizza->getall();
@@ -74,9 +76,8 @@ else {
     echo json_encode(
         array("Mensagem" => "Método não permitido.")
     );
-}
 
-// }
-// catch (Exception $e) {
-//  echo json_encode(array("erro" => $e->getMessage()));
-// }
+}
+} catch (Exception $e) {
+    echo json_encode(array("erro" => $e->getMessage()));
+}

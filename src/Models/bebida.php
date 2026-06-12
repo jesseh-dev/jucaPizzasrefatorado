@@ -1,5 +1,9 @@
 <?php
 
+namespace JesseVsouza\JucapizzasRefatorado\Models;
+
+use PDO;
+
 class Bebida {
 
     private $conn;

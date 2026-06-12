@@ -2,6 +2,10 @@
 
 namespace JesseVsouza\JucapizzasRefatorado\Config;
 
+use PDO;
+use PDOException; 
+use Throwable;
+
 class Database {
     private $host = 'localhost';
     private $db_name = 'jucapizzasdb';
@@ -12,8 +16,7 @@ class Database {
     
     public $conn;
 
-    public function getConnection()
-    {
+    public function getConnection(){
 
         $this->conn = null;
 
